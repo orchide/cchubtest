@@ -1,0 +1,11 @@
+export const SEQUELIZE = 'SEQUELIZE';
+export const DEVELOPMENT = 'development';
+export const TEST = 'test';
+export const PRODUCTION = 'production';
+export const ASSET_REPOSITORY = 'ASSET_REPOSITORY';
+export const SCORE_REPOSITORY = 'SCORE_REPOSITORY';
+export const ROLE_GUARDS = 'ROLE_GUARDS';
+export const PAGINATE_SERVICE_TOKEN = Symbol('PAGINATE_SERVICE');
+export const PAGINATE_TOKEN = 'PAGINATION_TOKEN';
+export const PAGINATE_LOADER = 'PAGINATION_LOADER';
+export const PAGINATE_OPTIONS = 'PAGINATION_OPTIONS';
