@@ -19,7 +19,7 @@ export class AssetService {
         ? 'Image'
         : file.mimetype.includes('video')
         ? 'Video'
-        : file.mimetype,
+          : file.mimetype.includes('pdf') ? 'PDF' : file.mimetype.includes('docx') ? 'Document' : 'Document',
       extension: file.mimetype,
     });
   }
@@ -38,21 +38,24 @@ export class AssetService {
       attributes: ['type',
             [
               Sequelize.fn('AVG', Sequelize.col('scores.value')),
-              'average_per_score_type',
+              'average_score'
             ],
      ],
       include: [
         {
           model: Score,
           as: 'scores',
+          attributes: [],
           where: {
             '$scores.type$': {
               [Op.like]: `%${scoreType}%`,
             },
-          }
+          },
+          required: false,
+          right: true
         },
       ],
-      group: ['Asset.id', 'scores.id'],
+      group: ['Asset.type'],
       raw: true,
     });
 
